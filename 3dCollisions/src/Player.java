@@ -2,7 +2,7 @@
 public class Player {
 	
 	private boolean left, right, forward, back;
-	private float xPos, yPos, zPos, lx, lz, vel, turnSpeed, currentRadAngle;
+	private float xPos, yPos, zPos, lx, lz, vel, turnSpeed, currentRadAngle, boundingSphereRad;
 	
 	public Player(float xPos, float yPos, float zPos, float lx, float lz){
 		this.xPos = xPos;
@@ -17,10 +17,11 @@ public class Player {
 		back = false;
 		
 		vel = 0.01f;
-		turnSpeed = 0.005f;
+		turnSpeed = 0.001f;
 		currentRadAngle = 0.0f;
+		boundingSphereRad = 3f;
 	}
-	
+
 	public void update(){
 		if(left || right){
 			if(right){
@@ -212,6 +213,20 @@ public class Player {
 	 */
 	public void setCurrentRadAngle(float currentRadAngle) {
 		this.currentRadAngle = currentRadAngle;
+	}
+
+	/**
+	 * @return the boundingSphereRad
+	 */
+	public float getBoundingSphereRad() {
+		return boundingSphereRad;
+	}
+
+	/**
+	 * @param boundingSphereRad the boundingSphereRad to set
+	 */
+	public void setBoundingSphereRad(float boundingSphereRad) {
+		this.boundingSphereRad = boundingSphereRad;
 	}
 	
 }

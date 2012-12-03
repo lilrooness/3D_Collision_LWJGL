@@ -27,11 +27,11 @@ public class Renderer {
 		GLU.gluLookAt(p1.getxPos(), p1.getyPos(), p1.getzPos(), 
 				  p1.getLx(), 0, p1.getLz(), 
 				  0, 1, 0);
-		glClearColor(0.0f, 0.0f, 0.0f, 1);
+		glClearColor(1.0f, 1.0f, 1.0f, 1);
 		glColor3f(1, 1, 1);
 		ImageBank.texInit();
 		
-		Wall w = new Wall(0f, -4f, 0f, 10f, 10f);
+		Wall w = new Wall(0f, -10f, 0f, 10f, -10f, 0f, 10f, 0f, 0f, 0f, 0f, 0f);
 		
 		while(!Display.isCloseRequested()){
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -63,12 +63,7 @@ public class Renderer {
 				p1.setRight(false);
 			}
 			
-			if(w.isCollision(p1)){
-				glColor3f(1, 0, 0);
-				System.out.println("collision !");
-			}else{
-				glColor3f(1, 1, 1);
-			}
+			w.collision_response(p1);
 			
 			p1.update();
 			Display.update();
